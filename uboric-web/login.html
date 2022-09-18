@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        form{
+            width:400px;
+            display:grid;
+            gap:20px;
+            font-family:sans-serif;
+            padding: 10px 30px 30px;
+            margin:auto;
+            margin-top:40px;
+            font-size:18px;
+            font-weight:lighter;
+        }
+        #login{
+            box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
+            width:500px;
+            margin:auto;
+            border-radius:10px;
+            padding-bottom:15px;
+        }
+        h2{
+            text-align:center;
+        }
+        input{
+            height:55px;
+            border-radius:5px;
+            border:rgba(128, 128, 128, 0.23) solid 0.1px;
+            padding:0px 20px;
+            font-size:16.4px;
+        }
+        input:last-child{
+            height:55px;
+            color:grey;
+        }
+        #accDoesntExists {
+            text-align: center;
+            font-size: 19px;
+            font-family: sans-serif;
+        }
+
+        #accDoesntExists>a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="a">
+        <p>FOR ONLINE PAYMENT EXTRA ₹100 DISCOUNT ON ORDERS ABOVE ₹500</p>   
+    </div>
+    <div id="second">
+    <div>
+        <input type="search" id="name" placeholder="search hear" required
+        minlength="5" maxlength="10" size="35">
+    </div>
+    <div>
+        <img src="https://www.uboric.com/wp-content/uploads/2021/04/uboric.svg" alt="company logo">
+    </div>
+    <div>
+        <p onclick="signupPage()">Signup</p>
+    </div>
+</div>
+
+<!-- <div>
+    <div id="nav">
+        <p>Home</p>
+        
+            <select id="car">
+                <option value="">Categories</option>
+                <option value="Fashion">fashion</option>
+                <option value="Kitchen">Kitchen</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Health & Personal Care">Health & Personal Care</option>
+                <option value="Electronic">Electronic</option>
+                <option value="Painting">Paintings</option>
+                <option value="Painting">Anti puncture Liquid</option>
+            </select>
+            <h3 onclick="Merchant()">Merchant/Bulk Order</h3>
+            <h3 onclick="Become()">Become a Seller</h3>
+    </div>
+
+</div> -->
+    <div id="login">
+    <form>
+        <h2>Login</h2>
+        <input id="email" type="email" placeholder="Enter Email" required />
+        <input id="password" type="password" minlength="8" maxlength="12" placeholder="Enter Password" required />
+        <input type="submit" value="LOGIN" />
+    </form>
+    <p id="accDoesntExists">Don't have an account? <a href="sign-up.html">Create New Account</a></p>
+</div>
+
+</body>
+
+</html>
+<script>
+    var redirect = localStorage.getItem("redirect");
+    document.querySelector("form").addEventListener("submit",myFunction);
+    var userDataArr = JSON.parse(localStorage.getItem("userData"))||[];
+    function myFunction () {
+        event.preventDefault();
+        var flag = false;
+        var email = document.querySelector("#email").value;
+        var password = document.querySelector("#password").value;
+        userDataArr.forEach(function(ele){
+            if(ele.email==email && ele.password==password){
+                storeUserData(ele);
+                flag = true;
+            }
+            console.log(ele);
+        }) 
+
+
+        function storeUserData(ele){
+            localStorage.setItem("loginInformation",JSON.stringify(ele));
+        }
+
+        if(flag){
+            alert("Successfully logged in!");
+            var token = Math.random();
+            localStorage.setItem("token",token);
+            if(redirect){
+                localStorage.removeItem("redirect");
+                window.location.href = redirect;
+            }
+            else{
+                window.location.href="index.html"
+            }
+        }
+        else {
+            alert("Please enter correct email or password!");
+        }
+     
+    }
+    function signupPage() {
+        window.location.href = "sign-up.html"
+    }
+    function loginPage() {
+        window.location.href = "login.html"
+    }
+   
+   
+</script>

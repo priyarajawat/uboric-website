@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cart.css">
+    <style>
+        a{
+         text-decoration: none;
+        }
+        
+       
+    </style>
+</head>
+<body>
+    <div id="a">
+        <p>FOR ONLINE PAYMENT EXTRA ₹100 DISCOUNT ON ORDERS ABOVE ₹500</p>   
+    </div>
+
+    <div id="second">
+        <div>
+            <input type="search" id="name" placeholder="search here" required
+            minlength="5" maxlength="10" size="35">
+        </div>
+        <div>
+            <img src="https://outstripinfotech.com/wpword/razi/wp-content/uploads/2022/08/200x80black.png" alt="company logo">
+        </div>
+        <div id="cart">
+            <p onclick="signupPage()">Signup</p>
+        </div>
+            <div id="cart">
+            <h4 onclick="payment()">Go For Payment</h4>
+            </div>
+        </div>
+
+        <div>
+            <div id="nav">
+                <p onclick="priya()"> 
+                   HOME </p>
+                
+                <select id="category">
+                    <option>Categories</option>
+                    <option value="Mens clothing">
+                      <a href="products.html"></a>Mens clothing
+                    </option>
+                    <option value="womens clothing">
+                      <a href="womens.html"></a>womens clothing
+                    </option>
+                    <option value="footwares">
+                      <a href="footwares.html"></a>Footwares
+                    </option>
+                  </select>
+                    <h3 onclick="CustomerPage()">Customer/Guest login</h3>
+                    <h3 onclick="marchantpage()">Merchant/Bulk Order</h3>
+                    <h3 onclick="become()">Become A Seller</h3>
+            </div>
+        
+        </div>
+        <div id="pri"><h1>cart</h1></div>
+        <div><a href="index.html">Home > Cart</a></div>
+
+        <div id="num"><h2>Amazing Offers on Checkout</h2></div>
+
+        <div id="flex">
+            
+            <div id="container">
+                
+           
+            </div>
+            <div >
+                <input type="text" id="promo" placeholder="Promo Code" />
+                <button onClick="PaymentPage()">apply code</button>    
+                <h1>my cart</h1>
+                <div id="total">
+                   <h3>Sub Total</h3>
+                </div>
+               
+               
+                 
+            </div>
+          
+
+        </div>
+        
+            <div id="o">
+            <h1>What Our Customer Says</h1>
+            <h2>' '</h2>
+            <div>
+            <div>
+            <p>Auspicious range of foot wares premium branded product. good service  and delivery duration. super high value of customer.</p>
+            <p>priya</p>
+            <p>💛💛🧡🧡💛-Customer</p>
+            </div>
+            <div>
+                <p>I think one of the best brand app for thr shoes shoping.im totaly happy with it Thank you so much uboric..</p>
+                <p>sangham</p>
+                <p>💛💛🧡🧡💛-Customer</p>
+            </div>
+            <div>
+                <p>Auspicious range of foot wares premium branded product. good service  and delivery duration. super high value of customer.</p>
+                <p>unknown</p>
+                <p>💛💛🧡🧡💛-Customer</p>
+            </div>
+            </div>
+            <button>add your review</button></div>
+            
+            <div id="w">
+                <div>
+            <img id="u" src="https://www.uboric.com/wp-content/uploads/2020/08/google-play1.png" alt="">
+            </div>
+            <div>
+            <p>About us</p>
+            <p>contact</p>
+            <p>Shipping & return</p>
+            <p>My account</p>
+            <p>Privacy policy</p>
+            <p>Become a seller</p>
+            <p>Terms & condiation</p>
+            
+            </div>
+            <div>
+                <p>© 2019 – 2021 UBORIC. ALL RIGHTS RESERVED.</p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQfaN5o3bB6JsgutCqM8BRRaN_4oO7uU1-9Q&usqp=CAU" alt="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYZ-ZybRa3EUmRrO7EYK1yAKlf-q2ihWGYlQ&usqp=CAU" alt="">
+            </div>
+            
+            </div>
+            
+       
+
+</body>
+</html>
+<script>
+
+document.querySelector("#category").addEventListener("click",submit)
+function submit(){
+    var selected = document.getElementById("category").value;
+    console.log(selected)
+    if(selected=="womens clothing")
+    {
+        window.location.href="womens.html"
+    }
+    else if(selected=="Mens clothing")
+    {
+        window.location.href="products.html"
+    }
+    else if(selected=="footwares")
+    {
+        window.location.href="footwares.html"
+    }
+
+}
+
+
+
+
+  
+
+
+
+var cartdata=JSON.parse(localStorage.getItem("cart1"))||[]
+console.log(cartdata)
+
+var total= cartdata.reduce(function(sum,elem,index){
+    return (sum)+(elem.price)
+},0)
+console.log(total)
+
+document.getElementById("total").append(total)
+
+
+
+
+
+
+displayData(cartdata)
+
+function displayData(cartdata){
+
+
+    cartdata.map(function(elem,index){
+    console.log(elem)
+
+  var container=document.getElementById("container")
+
+  var div=document.createElement("div")
+
+  var image = document.createElement("img");
+  image.src=elem.image_url;
+//   image.addEventListener("click",function(){
+//     mens(elem)
+// });
+  var name = document.createElement("h3");
+  name.innerText=elem.name;
+
+  var strikeprice = document.createElement("p");
+  strikeprice.innerText=elem.strprice;
+
+  var price = document.createElement("p")
+  price.innerText=elem.price;
+ 
+
+  
+  var button=document.createElement("button")
+  button.innerText="Remove"
+  button.addEventListener("click",function(){
+      RemoveFunction(elem,index)
+  })
+
+  div.append(image,name,price,strikeprice,button)
+  container.append(div)
+
+})
+}
+
+
+
+
+
+function  RemoveFunction(elem,index){
+    // console.log("remove")
+    
+    cartdata.splice(index,1)
+    console.log(cartdata)
+    localStorage.setItem("cart1",JSON.stringify(cartdata))
+    window.location.reload()
+}
+
+function signupPage() {
+        window.location.href = "sign-up.html"
+    }
+
+    function payment() {
+        window.location.href = "payment.html"
+    } 
+
+    function CustomerPage() {
+        window.location.href = "login.html"
+    }
+    function marchantpage() {
+        window.location.href = "products.html"
+    }
+    function become() {
+        window.location.href = "sign-up.html"
+    }
+    function Fashionpage() {
+        window.location.href = "footwares.html"
+    }
+    function PaymentPage() {
+
+        window.location.href = "payment.html"
+    }
+    function  priya(){
+        window.location.href = "index.html"
+    }
+</script>

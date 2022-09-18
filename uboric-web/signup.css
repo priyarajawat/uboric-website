@@ -1,0 +1,62 @@
+#a{
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+    color: white;
+    background-color: rgb(3, 66, 66);
+    margin: auto;
+}
+#second{
+    margin-top: 30px;
+    margin-right: 50px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#second>div img{
+    height: 70px;
+    cursor: pointer;
+}
+
+form {
+    width: 400px;
+    display: grid;
+    gap: 20px;
+    font-family: sans-serif;
+    padding: 10px 30px 30px;
+    margin: auto;
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: lighter;
+}
+#signup {
+    box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
+    width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    margin-bottom:30px;
+}
+h2 {
+    text-align: center;
+}
+input {
+    height: 55px;
+    border-radius: 5px;
+    border: rgba(128, 128, 128, 0.23) solid 0.1px;
+    padding: 0px 20px;
+    font-size: 16.4px;
+}
+input:last-child {
+    height: 55px;
+    color: grey;
+}
+#accExists {
+    text-align: center;
+    font-size: 19px;
+    font-family: sans-serif;
+}
+#accExists>a {
+    text-decoration: none;
+}
